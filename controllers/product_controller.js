@@ -152,3 +152,14 @@ exports.listRelated = (req,res) => {
             res.json(products)
         })
 }
+
+exports.listCategories = (req,res) => {
+    Product.distinct("category",{},(err,Categoriesduct) => {
+        if (err){
+            return res.status(400).json({
+                error: 'ไม่พบสินค้านี้ในระบบ'
+            })
+        }
+        res.json(Categoriesduct)
+    })
+}
